@@ -1,0 +1,60 @@
+@use 'sass:math';
+
+//Fonts
+@font-face {
+  font-family: "Marcellus";
+  src: url('../fonts/Marcellus-Regular.woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: url('../fonts/Nunito-Light.woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: url('../fonts/Nunito-Regular.woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: url('../fonts/Nunito-Medium.woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: url('../fonts/Nunito-Bold.woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+//Color variables
+$color-white: #fff;
+$color-black: #000;
+$color-gray: #a7a7a7;
+$color-red: #ff4f47;
+$color-navyBlue: #202954;
+
+//Breakpoints for responsive mixins
+$grid-breakpoints: ("xs": 576px,
+  "s": 768px,
+  "m": 992px,
+  "l": 1024px,
+  "xl": 1280px);
+
+//Font variables
+$font-marcellus: "Marcellus";
+$font-nunito: "Nunito";
