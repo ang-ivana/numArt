@@ -96,12 +96,19 @@ header {
     }
   }
 
-  @include media-down(xs) {
-    nav {
-      max-width: 100%;
-    }
+
+@include media-down(xs) {
+  nav {
+    max-width: 100%;
+}
+}
+@include media-down (xs) {
+  nav {
+    max-width: 100%; 
+
   }
 }
+
 
 .overlay {
   display: none;
@@ -449,13 +456,13 @@ main {
           width: 100%;
           padding: 8px 16px;
 
-
           h2 {
             color: $color-white;
             text-transform: uppercase;
           }
 
         }
+
 
         &-container {
           position: absolute;
@@ -525,14 +532,19 @@ main {
 
               &.green {
                 background-color: #b2ff9e;
-
               }
 
               &.grey {
                 background-color: #d9d9d9;
               }
+
             }
 
+
+
+            } 
+
+        
 
           }
 
@@ -640,7 +652,6 @@ main {
 
       @include media-down(xs) {
         grid-template-columns: repeat(1, 100%);
-
         .product-tile {
           display: flex;
           gap: 16px;
@@ -665,11 +676,10 @@ main {
     @include media-down(s) {
       flex-direction: column;
 
-      .filters,
-      .products {
+
+    .filters, .products {
         width: 100%;
       }
-    }
   }
 
   .js-none {
@@ -693,6 +703,12 @@ main {
   @include media-down(s) {
     padding: 30px;
   }
+
+  @include media-down(xs) {
+    padding: 30px 16px;
+  }
+
+
 
   @include media-down(xs) {
     padding: 30px 16px;
@@ -768,13 +784,13 @@ footer {
   cursor: pointer;
   background-color: $color-navyBlue;
   z-index: 24;
-  position: absolute;
   bottom: 30px;
   right: 30px;
   transform: translateY(100%);
   opacity: 0;
   transition: all .75s ease-in-out;
   position: fixed;
+
 
   img {
     pointer-events: none;

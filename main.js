@@ -126,7 +126,9 @@ function FiltersLogic() {
 }
 FiltersLogic();
 
+
 //Scroll to top
+
 const scrollButton = document.getElementById("scrollButton");
 window.addEventListener("scroll", (e) => {
   let scroll = this.scrollY;
@@ -143,3 +145,4 @@ scrollButton.onclick = () => window.scrollTo({
   top: 0,
   behavior: "smooth"
 });
+
