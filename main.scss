@@ -96,12 +96,19 @@ header {
     }
   }
 
-  @include media-down (xs) {
-    nav {
-      max-width: 100%; 
-    }
+
+@include media-down(xs) {
+  nav {
+    max-width: 100%;
+}
+}
+@include media-down (xs) {
+  nav {
+    max-width: 100%; 
+
   }
 }
+
 
 .overlay {
   display: none;
@@ -438,7 +445,7 @@ main {
         }
       }
 
-      @include media-down (s) {
+      @include media-down(s) {
         position: sticky;
         top: 0;
         z-index: 25;
@@ -450,11 +457,13 @@ main {
           padding: 8px 16px;
 
           h2 {
-             color: $color-white;
-             text-transform: uppercase;
+            color: $color-white;
+            text-transform: uppercase;
           }
-         
-        } 
+
+        }
+
+
         &-container {
           position: absolute;
           bottom: 0;
@@ -504,12 +513,12 @@ main {
               padding: 5px 10px;
               font-family: $font-nunito;
               text-transform: uppercase;
-               height: auto;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 1;
-            overflow: hidden;
-            line-height: 19px;
+              height: auto;
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 1;
+              overflow: hidden;
+              line-height: 19px;
 
               &.red {
                 color: $color-white;
@@ -528,9 +537,15 @@ main {
               &.grey {
                 background-color: #d9d9d9;
               }
+
+            }
+
+
+
             } 
 
         
+
           }
 
           .product-title {
@@ -644,6 +659,7 @@ main {
           .image-container {
             max-width: calc(35% - 8px);
             width: 100%;
+
             img {
               object-fit: cover;
             }
@@ -659,10 +675,11 @@ main {
 
     @include media-down(s) {
       flex-direction: column;
-      .filters, .products {
+
+
+    .filters, .products {
         width: 100%;
       }
-    }
   }
 
   .js-none {
@@ -692,6 +709,10 @@ main {
   }
 
 
+
+  @include media-down(xs) {
+    padding: 30px 16px;
+  }
 }
 
 
@@ -763,12 +784,13 @@ footer {
   cursor: pointer;
   background-color: $color-navyBlue;
   z-index: 24;
-  position: fixed;
   bottom: 30px;
   right: 30px;
   transform: translateY(100%);
   opacity: 0;
   transition: all .75s ease-in-out;
+  position: fixed;
+
 
   img {
     pointer-events: none;

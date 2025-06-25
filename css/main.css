@@ -613,7 +613,9 @@ main .filters-products-container .products .product-tile .info-container .produc
   main .filters-products-container {
     flex-direction: column;
   }
+
   main .filters-products-container .filters, main .filters-products-container .products {
+
     width: 100%;
   }
 }
@@ -701,12 +703,13 @@ footer .footer-links-container ul li a:hover:before {
   cursor: pointer;
   background-color: #202954;
   z-index: 24;
-  position: fixed;
   bottom: 30px;
   right: 30px;
   transform: translateY(100%);
   opacity: 0;
   transition: all 0.75s ease-in-out;
+  position: fixed;
+
 }
 #scrollButton img {
   pointer-events: none;
@@ -716,4 +719,5 @@ footer .footer-links-container ul li a:hover:before {
   transform: translateY(0) !important;
   opacity: 1 !important;
   transition: all 0.75s ease-in-out !important;
-}/*# sourceMappingURL=main.css.map */
+}
+
