@@ -36,6 +36,8 @@ function FiltersLogic() {
   const filtersList = document.querySelector('.filters-container')
   const initalFilters = filtersList.querySelectorAll('.filter-box')
   const filterTitle = filtersList.querySelectorAll('.filters-title')
+  const filtersBtn = document.querySelector('.filters-top')
+  const closeFiltersBtn = document.querySelector('.close-mobile-filters')
   //Number of items per filter to show
   const itemsToShow = 5;
   //Number of filters to show
@@ -122,7 +124,20 @@ function FiltersLogic() {
     })
   }
 
-
+  if (window.innerWidth < 768) {
+    filtersBtn && filtersBtn.addEventListener('click', () => {
+      filtersList.classList.add('js-mobile-filters')
+      overlay.classList.add('js-overlay')
+      body.style.overflow = 'hidden'
+    })
+    function CloseMobileFilters() {
+      filtersList.classList.remove('js-mobile-filters')
+      overlay.classList.remove('js-overlay')
+      body.style.overflow = 'auto'
+    }
+    overlay && overlay.addEventListener('click', CloseMobileFilters)
+    closeFiltersBtn && closeFiltersBtn.addEventListener('click', CloseMobileFilters)
+  }
 }
 FiltersLogic();
 
@@ -146,3 +161,15 @@ scrollButton.onclick = () => window.scrollTo({
   behavior: "smooth"
 });
 
+
+// const bookCard = document.querySelectorAll('.book-card');
+// const radioBtn = document.querySelectorAll('.radio-btn');
+
+// for (const [i] of radioBtn.entries()) {
+//     radioBtn[i].addEventListener('click', (e) => {
+//         bookCard.forEach((book) => book.classList.remove('book-in-focus'));
+//         bookCard[i].classList.add('book-in-focus');
+//         radioBtn.forEach((radio) => radio.classList.remove('radio-on'));
+//         radioBtn[i].classList.add('radio-on');
+//     })
+// }
