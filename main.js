@@ -161,15 +161,34 @@ scrollButton.onclick = () => window.scrollTo({
   behavior: "smooth"
 });
 
+//Footer Mobile
+// const linksTitle = document.querySelectorAll('.links-title');
+// const linksList = document.querySelectorAll('.links-list');
 
-// const bookCard = document.querySelectorAll('.book-card');
-// const radioBtn = document.querySelectorAll('.radio-btn');
-
-// for (const [i] of radioBtn.entries()) {
-//     radioBtn[i].addEventListener('click', (e) => {
-//         bookCard.forEach((book) => book.classList.remove('book-in-focus'));
-//         bookCard[i].classList.add('book-in-focus');
-//         radioBtn.forEach((radio) => radio.classList.remove('radio-on'));
-//         radioBtn[i].classList.add('radio-on');
-//     })
+// for (const [i] of linksTitle.entries()) {
+//   linksTitle[i].addEventListener('click', (e) => {
+//     linksList.forEach((list) => list.classList.remove('js-links-list'));
+//     linksList[i].classList.add('js-links-list');
+//     linksTitle.forEach((title) => title.classList.remove('js-links-title'));
+//     linksTitle[i].classList.add('js-links-title');
+//   })
 // }
+const linksTitle = document.querySelectorAll('.links-title');
+const linksList = document.querySelectorAll('.links-list');
+
+linksTitle.forEach((title, i) => {
+  title.addEventListener('click', () => {
+    const isOpen = linksList[i].classList.contains('js-links-list');
+
+    // Close all first
+    linksList.forEach(list => list.classList.remove('js-links-list'));
+    linksTitle.forEach(t => t.classList.remove('js-links-title'));
+
+    if (!isOpen) {
+      // If it was closed, open it
+      linksList[i].classList.add('js-links-list');
+      linksTitle[i].classList.add('js-links-title');
+    }
+    // If it was open, clicking again leaves all closed
+  });
+});
