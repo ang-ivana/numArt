@@ -97,10 +97,15 @@ header {
   }
 
 
-  @include media-down(xs) {
-    nav {
-      max-width: 100%;
-    }
+@include media-down(xs) {
+  nav {
+    max-width: 100%;
+}
+}
+@include media-down (xs) {
+  nav {
+    max-width: 100%; 
+
   }
 }
 
@@ -448,65 +453,22 @@ main {
         &-top {
           cursor: pointer;
           background-color: $color-navyBlue;
-          width: calc(100% + 60px);
-          margin-left: -30px;
+          width: 100%;
           padding: 8px 16px;
 
           h2 {
             color: $color-white;
             text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
           }
 
         }
 
 
         &-container {
-          position: fixed;
+          position: absolute;
           bottom: 0;
           background-color: $color-white;
-          transform: translateY(200%);
-          width: 100%;
-          left: 0;
-          padding: 16px;
-          max-height: 80dvh;
-          overflow-y: auto;
-          transition: transform .75s ease-in-out;
-          border-top-left-radius: 30px;
-          border-top-right-radius: 30px;
-
-          .filters-mobile-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #d9d9d9;
-            padding: 16px 0 10px;
-            margin-bottom: 16px;
-
-            h2 {
-              font-size: 18px;
-              font-weight: 700;
-              font-family: $font-marcellus;
-              color: $color-navyBlue;
-            }
-
-            .close-mobile-filters {
-              cursor: pointer;
-
-              img {
-                pointer-events: none;
-                filter: brightness(0) saturate(100%) invert(15%) sepia(38%) saturate(1290%) hue-rotate(195deg) brightness(88%) contrast(94%);
-              }
-            }
-          }
-
-          &.js-mobile-filters {
-            transition: transform .75s ease-in-out;
-            transform: translateY(0);
-          }
+          transform: translateY(100%);
         }
       }
     }
@@ -520,15 +482,12 @@ main {
       .product-tile {
         padding: 5px;
         border: 1px solid #a7a7a7a5;
-        display: flex;
-        flex-direction: column;
 
         .image-container {
           border: 1px solid $color-red;
           display: flex;
           overflow: hidden;
           justify-content: center;
-          flex-grow: 1;
 
           img {
             width: 100%;
@@ -580,102 +539,109 @@ main {
               }
 
             }
+
+
+
+            } 
+
+        
+
           }
-        }
 
-        .product-title {
-          line-height: 20px;
-          min-height: 40px;
-          font-size: 18px;
-          font-weight: 600;
-          font-family: $font-nunito;
-          max-height: 40px;
-          color: $color-navyBlue;
-          height: auto;
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 2;
-          overflow: hidden;
-        }
-
-        .product-description {
-          font-size: 16px;
-          line-height: 18px;
-          font-weight: 300;
-          font-family: $font-nunito;
-          height: auto;
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 3;
-          overflow: hidden;
-        }
-
-        .price-container {
-          display: flex;
-          align-items: flex-end;
-          gap: 5px;
-          font-family: $font-nunito;
-
-          .price {
+          .product-title {
+            line-height: 20px;
+            min-height: 40px;
             font-size: 18px;
             font-weight: 600;
+            font-family: $font-nunito;
+            max-height: 40px;
+            color: $color-navyBlue;
+            height: auto;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
           }
 
-          .old-price {
-            color: $color-gray;
-            font-size: 14px;
-            text-decoration: line-through;
+          .product-description {
+            font-size: 16px;
+            line-height: 18px;
+            font-weight: 300;
+            font-family: $font-nunito;
+            height: auto;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            overflow: hidden;
           }
 
-          &.sale-price {
+          .price-container {
+            display: flex;
+            align-items: flex-end;
+            gap: 5px;
+            font-family: $font-nunito;
+
             .price {
-              color: $color-red;
+              font-size: 18px;
+              font-weight: 600;
             }
+
+            .old-price {
+              color: $color-gray;
+              font-size: 14px;
+              text-decoration: line-through;
+            }
+
+            &.sale-price {
+              .price {
+                color: $color-red;
+              }
+            }
+
           }
 
-        }
-
-        .product-btn {
-          width: 100%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          padding: 5px;
-          border: 2px solid $color-navyBlue;
-          color: $color-navyBlue;
-          font-size: 16px;
-          text-transform: uppercase;
-          cursor: pointer;
-          font-family: $font-nunito;
-          margin-top: 10px;
-          position: relative;
-          overflow: hidden;
-          transition: color .75s ease-in-out;
-
-          span {
-            z-index: 5;
-          }
-
-          &:before {
-            content: "";
-            position: absolute;
-            color: $color-white;
-            background-color: $color-navyBlue;
-            transform: translateX(-100%);
-            transition: transform .75s ease-in-out;
+          .product-btn {
             width: 100%;
-            height: 100%;
-          }
-
-          &:hover {
-            color: $color-white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+            border: 2px solid $color-navyBlue;
+            color: $color-navyBlue;
+            font-size: 16px;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-family: $font-nunito;
+            margin-top: 10px;
+            position: relative;
+            overflow: hidden;
             transition: color .75s ease-in-out;
 
-            &:before {
-              transform: translateX(0);
-              transition: transform .75s ease-in-out;
+            span {
+              z-index: 5;
             }
 
+            &:before {
+              content: "";
+              position: absolute;
+              color: $color-white;
+              background-color: $color-navyBlue;
+              transform: translateX(-100%);
+              transition: transform .75s ease-in-out;
+              width: 100%;
+              height: 100%;
+            }
+
+            &:hover {
+              color: $color-white;
+              transition: color .75s ease-in-out;
+
+              &:before {
+                transform: translateX(0);
+                transition: transform .75s ease-in-out;
+              }
+
+            }
           }
         }
       }
@@ -686,7 +652,6 @@ main {
 
       @include media-down(xs) {
         grid-template-columns: repeat(1, 100%);
-
         .product-tile {
           display: flex;
           gap: 16px;
@@ -711,12 +676,10 @@ main {
     @include media-down(s) {
       flex-direction: column;
 
-      .filters,
-      .products {
+
+    .filters, .products {
         width: 100%;
       }
-    }
-
   }
 
   .js-none {
@@ -745,6 +708,11 @@ main {
     padding: 30px 16px;
   }
 
+
+
+  @include media-down(xs) {
+    padding: 30px 16px;
+  }
 }
 
 
@@ -833,16 +801,4 @@ footer {
   transform: translateY(0) !important;
   opacity: 1 !important;
   transition: all .75s ease-in-out !important;
-}
-
-@include media-up (s) {
-  .mobile-only {
-    display: none !important;
-  }
-}
-
-@include media-down (s) {
-  .desktop-only {
-    display: none !important;
-  }
 }
