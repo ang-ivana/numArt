@@ -31,6 +31,7 @@ closeBurgerBtn.addEventListener('click', CloseBurger)
 
 //Filters Logic
 function FiltersLogic() {
+  const filters = document.querySelector('.filters')
   const allFilters = document.querySelector('.view-all-filters')
   const allFiltersTitle = document.querySelector('.all-filters')
   const filtersList = document.querySelector('.filters-container')
@@ -38,33 +39,51 @@ function FiltersLogic() {
   const filterTitle = filtersList.querySelectorAll('.filters-title')
   const filtersBtn = document.querySelector('.filters-top')
   const closeFiltersBtn = document.querySelector('.close-mobile-filters')
+  const allFIBtns = document.querySelectorAll('.view-all-FI')
   //Number of items per filter to show
   const itemsToShow = 5;
   //Number of filters to show
-  const filtersToShow = 4;
+  // let filtersToShow = 4;
+  // if (window.innerWidth < 1024) {
+  //   filtersToShow = 20;
+  // }
+  let filtersToShow = window.innerWidth < 1024 ? Infinity : 4;
+
   const filterBox = document.querySelectorAll('.filter-box');
   // Close/Open Filter Box
 
-  filterTitle && filterTitle.forEach((el) => {
-    el.addEventListener('click', (e) => {
-      let filterItem = e.target.parentElement;
-      let filterContainer = e.target.parentElement.parentElement;
-      let filterList = filterContainer.querySelector('.filters-list');
-      filterBox.forEach((el) => {
-        // console.log(filterItem)
-        if (el == filterContainer) {
-          filterItem.classList.toggle('js-filters-title');
-          filterList.classList.toggle('js-filters-list')
-        }
-      });
-    });
+  const isMobile = window.innerWidth < 1024;
 
-    if (window.innerWidth < 1024) {
-      filterBox.forEach((el) => {
-        el.classList.remove('js-filter-box');
-      });
+  function toggleFilterState(container, close = false) {
+    const title = container.querySelector('.filters-title');
+    const list = container.querySelector('.filters-list');
+    const viewMore = container.querySelector('.view-all-FI');
+
+    if (close) {
+      container.classList.remove('js-filter-box');
+      title?.classList.add('js-filters-title');
+      list?.classList.add('js-filters-list');
+      viewMore?.classList.add('js-none');
+    } else {
+      title?.classList.toggle('js-filters-title');
+      list?.classList.toggle('js-filters-list');
+      viewMore?.classList.toggle('js-none');
     }
+  }
+
+  // Handle click on filter title
+  filterTitle?.forEach((el) => {
+    el.addEventListener('click', (e) => {
+      const container = el.closest('.filter-box');
+      if (container) toggleFilterState(container);
+    });
   });
+
+  // Auto-close filters on mobile
+  if (isMobile) {
+    filterBox?.forEach((box) => toggleFilterState(box, true));
+  }
+
   function HideAditionalFilters() {
     for (let i = filtersToShow; i < filterBox.length; i++) {
       filterBox[i].classList.add('js-none');
@@ -127,11 +146,13 @@ function FiltersLogic() {
   if (window.innerWidth < 768) {
     filtersBtn && filtersBtn.addEventListener('click', () => {
       filtersList.classList.add('js-mobile-filters')
+      filters.classList.add('js-filters')
       overlay.classList.add('js-overlay')
       body.style.overflow = 'hidden'
     })
     function CloseMobileFilters() {
       filtersList.classList.remove('js-mobile-filters')
+      filters.classList.remove('js-filters')
       overlay.classList.remove('js-overlay')
       body.style.overflow = 'auto'
     }
