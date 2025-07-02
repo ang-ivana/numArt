@@ -326,6 +326,10 @@ main {
             margin-bottom: 5px;
             cursor: pointer;
 
+            span {
+              flex-grow: 1;
+            }
+
             img {
               transition: transform .75s ease-in-out;
               transform: rotate(0);
@@ -375,7 +379,8 @@ main {
             }
           }
 
-          &.custom-checkbox {
+          &.custom-checkbox,
+          &.custom-radiobtn {
             .filters-item {
               .checkbox-label {
                 position: relative;
@@ -425,6 +430,30 @@ main {
               }
             }
           }
+
+          &.custom-radiobtn {
+            .filters-item {
+              .checkbox-label {
+                input {
+                  &:before {
+                    border-radius: 50%;
+                  }
+
+                  &:after {
+                    border-radius: 50%;
+                    content: "";
+                    background-color: $color-navyBlue;
+                    border: 2px solid $color-white;
+                    width: 12px;
+                    height: 12px;
+                    top: -1px;
+                    left: 1px;
+                  }
+                }
+              }
+            }
+
+          }
         }
 
         .view-all-filters {
@@ -444,13 +473,14 @@ main {
       @include media-down(s) {
         position: sticky;
         top: 0;
-        z-index: 25;
+        z-index: 11;
 
         &-top {
           cursor: pointer;
           background-color: $color-navyBlue;
           width: 100vw;
-          margin-left: -16px;
+          margin-left: -30px;
+          overflow: hidden;
           padding: 8px 16px;
 
           h2 {
@@ -478,6 +508,7 @@ main {
           transition: transform .75s ease-in-out;
           border-top-left-radius: 30px;
           border-top-right-radius: 30px;
+
 
           .filters-mobile-header {
             display: flex;
@@ -509,6 +540,16 @@ main {
             transform: translateY(0);
           }
         }
+
+        &.js-filters {
+          z-index: 12;
+        }
+      }
+
+      @include media-down(xs) {
+        &-top {
+          margin-left: -16px;
+        }
       }
     }
 
@@ -525,7 +566,6 @@ main {
         flex-direction: column;
 
         .image-container {
-          border: 1px solid $color-red;
           display: flex;
           overflow: hidden;
           justify-content: center;
@@ -549,6 +589,7 @@ main {
             display: flex;
             gap: 5px;
             overflow-x: auto;
+            min-height: 29px;
 
             &-item {
               font-size: 12px;
@@ -655,6 +696,7 @@ main {
 
           span {
             z-index: 5;
+            text-align: center;
           }
 
           &:before {
