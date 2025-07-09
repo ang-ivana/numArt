@@ -1,0 +1,171 @@
+{
+  "menu": [
+    {
+      "title": "Paintings",
+      "link": "#",
+      "subcategories": [
+        {
+          "title": "Oil Painting",
+          "link": "#",
+          "children": [
+            { "title": "Realism", "link": "#" },
+            { "title": "Impressionism", "link": "#" },
+            { "title": "Abstract", "link": "#" }
+          ]
+        },
+        {
+          "title": "Watercolor",
+          "link": "#",
+          "children": [
+            { "title": "Nature", "link": "#" },
+            { "title": "Urban Scenes", "link": "#" },
+            { "title": "Fantasy", "link": "#" }
+          ]
+        },
+        {
+          "title": "Acrylic",
+          "link": "#",
+          "children": [
+            { "title": "Expressionist", "link": "#" },
+            { "title": "Minimalist", "link": "#" },
+            { "title": "Figurative", "link": "#" }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Sculptures",
+      "link": "#",
+      "subcategories": [
+        {
+          "title": "Bronze",
+          "link": "#",
+          "children": [
+            { "title": "Classical", "link": "#" },
+            { "title": "Modern", "link": "#" }
+          ]
+        },
+        {
+          "title": "Wood",
+          "link": "#",
+          "children": [
+            { "title": "Carved", "link": "#" },
+            { "title": "Assembled", "link": "#" }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Literature",
+      "link": "#",
+      "subcategories": [
+        {
+          "title": "Poetry",
+          "link": "#",
+          "children": [
+            { "title": "Free Verse", "link": "#" },
+            { "title": "Haiku", "link": "#" },
+            { "title": "Narrative", "link": "#" }
+          ]
+        },
+        {
+          "title": "Novels",
+          "link": "#",
+          "children": [
+            { "title": "Historical Fiction", "link": "#" },
+            { "title": "Science Fiction", "link": "#" },
+            { "title": "Fantasy", "link": "#" }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Drawings",
+      "link": "#",
+      "subcategories": [
+        {
+          "title": "Pencil",
+          "link": "#",
+          "children": [
+            { "title": "Portraits", "link": "#" },
+            { "title": "Landscapes", "link": "#" }
+          ]
+        },
+        {
+          "title": "Ink",
+          "link": "#",
+          "children": [
+            { "title": "Line Art", "link": "#" },
+            { "title": "Calligraphy", "link": "#" }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Photography",
+      "link": "#",
+      "subcategories": [
+        {
+          "title": "Portrait",
+          "link": "#",
+          "children": [
+            { "title": "Studio", "link": "#" },
+            { "title": "Environmental", "link": "#" }
+          ]
+        },
+        {
+          "title": "Landscape",
+          "link": "#",
+          "children": [
+            { "title": "Natural", "link": "#" },
+            { "title": "Urban", "link": "#" }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Digital Art",
+      "link": "#",
+      "subcategories": [
+        {
+          "title": "3D Art",
+          "link": "#",
+          "children": [
+            { "title": "Character Design", "link": "#" },
+            { "title": "Environments", "link": "#" }
+          ]
+        },
+        {
+          "title": "AI-Generated",
+          "link": "#",
+          "children": [
+            { "title": "Style Transfer", "link": "#" },
+            { "title": "Prompt Art", "link": "#" }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Graphic Arts",
+      "link": "#",
+      "subcategories": [
+        {
+          "title": "Posters",
+          "link": "#",
+          "children": [
+            { "title": "Gig Posters", "link": "#" },
+            { "title": "Movie Posters", "link": "#" }
+          ]
+        },
+        {
+          "title": "Typography",
+          "link": "#",
+          "children": [
+            { "title": "Hand Lettering", "link": "#" },
+            { "title": "Experimental", "link": "#" }
+          ]
+        }
+      ]
+    }
+  ]
+}

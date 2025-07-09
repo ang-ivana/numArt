@@ -213,3 +213,32 @@ linksTitle.forEach((title, i) => {
     // If it was open, clicking again leaves all closed
   });
 });
+//Json menu console logged
+fetch('header-menu.json')
+  .then(response => response.json())
+  .then(data => {
+    console.log(data.menu);
+  })
+  .catch(error => {
+    console.error('Error loading menu:', error);
+  });
+
+//Header Logic
+const menuLvl0Title = document.querySelectorAll('.menu-lvl0-title')
+const submenuContainer = document.querySelectorAll('.submenu-container')
+menuLvl0Title.forEach((title, i) => {
+  title.addEventListener('mouseover', () => {
+    const isOpen = submenuContainer[i].classList.contains('active');
+
+    // Close all first
+    submenuContainer.forEach(list => list.classList.remove('active'));
+    menuLvl0Title.forEach(t => t.classList.remove('active'));
+
+    if (!isOpen) {
+      // If it was closed, open it
+      submenuContainer[i].classList.add('active');
+      menuLvl0Title[i].classList.add('active');
+    }
+    // If it was open, clicking again leaves all closed
+  });
+});
