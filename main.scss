@@ -16,8 +16,9 @@ header {
     flex-grow: 1;
     display: flex;
     gap: 20px;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: center;
+    position: relative;
 
     a {
       font-family: $font-nunito;
@@ -33,6 +34,81 @@ header {
 
       &:hover {
         background-position: left bottom;
+      }
+    }
+
+    .submenu-item-lvl1 {
+      a {
+        font-size: 16px;
+        text-transform: capitalize;
+        text-align: left;
+        margin: 10px 20px
+      }
+
+      .submenu-item-lvl2 {
+        a {
+          color: $color-navyBlue;
+          font-size: 14px
+        }
+      }
+    }
+  }
+
+  .nav-container {
+    display: flex;
+    gap: 20px;
+
+
+    .submenu-container {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      background-color: $color-gray;
+      left: 0;
+      z-index: 30;
+      height: 0;
+      overflow: hidden;
+      transition: height .5s ease-in-out;
+      width: 100%;
+      top: calc(100% + 10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12),
+        0 4px 6px rgba(0, 0, 0, 0.08);
+      border-bottom-left-radius: 6px;
+      border-bottom-right-radius: 6px;
+
+
+      &.active {
+        height: 50dvh;
+        transition: height .5s ease-in-out;
+      }
+
+      .submenu-item-lvl1 {
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+
+      }
+
+      .submenu-item-lvl2 {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        left: 30%;
+        padding: 15px;
+        background-color: $color-white;
+        width: 0;
+        overflow: hidden;
+        transition: max-width .5s ease-in-out;
+        height: 100%;
+        top: 0;
+
+        &.active {
+          display: flex;
+          max-width: 70%;
+          width: 100%;
+          transition: max-width .5s ease-in-out;
+        }
       }
     }
   }

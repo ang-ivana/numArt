@@ -74,8 +74,9 @@ header nav {
   flex-grow: 1;
   display: flex;
   gap: 20px;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
+  position: relative;
 }
 header nav a {
   font-family: "Nunito";
@@ -91,6 +92,65 @@ header nav a {
 }
 header nav a:hover {
   background-position: left bottom;
+}
+header nav .submenu-item-lvl1 a {
+  font-size: 16px;
+  text-transform: capitalize;
+  text-align: left;
+  margin: 10px 20px;
+}
+header nav .submenu-item-lvl1 .submenu-item-lvl2 a {
+  color: #202954;
+  font-size: 14px;
+}
+header .nav-container {
+  display: flex;
+  gap: 20px;
+}
+header .nav-container .submenu-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: #a7a7a7;
+  left: 0;
+  z-index: 30;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.5s ease-in-out;
+  width: 100%;
+  top: calc(100% + 10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12), 0 4px 6px rgba(0, 0, 0, 0.08);
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+header .nav-container .submenu-container.active {
+  height: 50dvh;
+  transition: height 0.5s ease-in-out;
+}
+header .nav-container .submenu-container .submenu-item-lvl1 {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+header .nav-container .submenu-container .submenu-item-lvl2 {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 30%;
+  padding: 15px;
+  background-color: #fff;
+  width: 0;
+  overflow: hidden;
+  transition: max-width 0.5s ease-in-out;
+  height: 100%;
+  top: 0;
+}
+header .nav-container .submenu-container .submenu-item-lvl2.active {
+  display: flex;
+  max-width: 70%;
+  width: 100%;
+  transition: max-width 0.5s ease-in-out;
 }
 header .burger-btn {
   display: none;
