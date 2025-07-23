@@ -182,6 +182,134 @@ scrollButton.onclick = () => window.scrollTo({
   behavior: "smooth"
 });
 
+// Load menu JSON, build HTML, then initialize behavior
+document.addEventListener('DOMContentLoaded', function () {
+  fetch('header-menu.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      buildMenu(data);
+      initMenuBehavior();
+    })
+    .catch(error => {
+      console.error('Error loading menu:', error);
+    });
+});
+
+
+// Build menu DOM structure from JSON (Populating Header Menu)
+function buildMenu(data) {
+  const navContainer = document.querySelector('.nav-container');
+  navContainer.innerHTML = ''; // Clear existing
+
+  data.menu.forEach(menuItem => {
+    const lvl0 = document.createElement('div');
+    lvl0.className = 'menu-item-lvl0';
+
+    const titleLink = document.createElement('a');
+    titleLink.href = menuItem.link;
+    titleLink.className = 'menu-lvl0-title';
+    titleLink.textContent = menuItem.title;
+    lvl0.appendChild(titleLink);
+
+    const submenuContainer = document.createElement('div');
+    submenuContainer.className = 'submenu-container';
+
+    menuItem.subcategories.forEach((subcategory, index) => {
+      const lvl1 = document.createElement('div');
+      lvl1.className = 'submenu-item-lvl1';
+
+      const subLink = document.createElement('a');
+      subLink.href = subcategory.link;
+      subLink.textContent = subcategory.title;
+      lvl1.appendChild(subLink);
+
+      const lvl2 = document.createElement('div');
+      lvl2.className = 'submenu-item-lvl2';
+
+      // Add 'active' to the first lvl2 of each menu group
+      if (index === 0) lvl2.classList.add('active');
+
+      subcategory.children.forEach(child => {
+        const childLink = document.createElement('a');
+        childLink.href = child.link;
+        childLink.textContent = child.title;
+        lvl2.appendChild(childLink);
+      });
+
+      lvl1.appendChild(lvl2);
+      submenuContainer.appendChild(lvl1);
+    });
+
+    lvl0.appendChild(submenuContainer);
+    navContainer.appendChild(lvl0);
+  });
+}
+
+// Attach interactivity after DOM is populated
+function initMenuBehavior() {
+  const menuTitles = document.querySelectorAll('.menu-lvl0-title');
+
+  menuTitles.forEach(title => {
+    const parentItem = title.closest('.menu-item-lvl0');
+    const submenu = parentItem.querySelector('.submenu-container');
+
+    let openTimeout, closeTimeout;
+
+    // Open submenu with delay
+    title.addEventListener('mouseenter', () => {
+      clearTimeout(closeTimeout);
+
+      // Close others immediately
+      document.querySelectorAll('.submenu-container.active').forEach(sc => {
+        if (sc !== submenu) sc.classList.remove('active');
+      });
+
+      openTimeout = setTimeout(() => {
+        submenu.classList.add('active');
+      }, 300); // adjust delay here
+    });
+
+    // Close submenu with delay on mouseleave
+    parentItem.addEventListener('mouseleave', () => {
+      clearTimeout(openTimeout);
+      closeTimeout = setTimeout(() => {
+        submenu.classList.remove('active');
+      }, 350); // adjust delay here
+    });
+
+    parentItem.addEventListener('mouseenter', () => {
+      clearTimeout(closeTimeout);
+    });
+  });
+
+  // Handle submenu-item-lvl1 clicks
+  document.querySelectorAll('.submenu-item-lvl1 > a').forEach(link => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      const lvl1 = this.closest('.submenu-item-lvl1');
+      const submenuLvl2 = lvl1.querySelector('.submenu-item-lvl2');
+      if (!submenuLvl2) return;
+
+      const container = lvl1.closest('.submenu-container');
+      if (!container) return;
+
+      container.querySelectorAll('.submenu-item-lvl2').forEach(el => {
+        el.classList.remove('active');
+      });
+
+      submenuLvl2.classList.add('active');
+    });
+  });
+}
+
+
+
 //Footer Mobile
 // const linksTitle = document.querySelectorAll('.links-title');
 // const linksList = document.querySelectorAll('.links-list');
@@ -194,51 +322,4 @@ scrollButton.onclick = () => window.scrollTo({
 //     linksTitle[i].classList.add('js-links-title');
 //   })
 // }
-const linksTitle = document.querySelectorAll('.links-title');
-const linksList = document.querySelectorAll('.links-list');
 
-linksTitle.forEach((title, i) => {
-  title.addEventListener('click', () => {
-    const isOpen = linksList[i].classList.contains('js-links-list');
-
-    // Close all first
-    linksList.forEach(list => list.classList.remove('js-links-list'));
-    linksTitle.forEach(t => t.classList.remove('js-links-title'));
-
-    if (!isOpen) {
-      // If it was closed, open it
-      linksList[i].classList.add('js-links-list');
-      linksTitle[i].classList.add('js-links-title');
-    }
-    // If it was open, clicking again leaves all closed
-  });
-});
-//Json menu console logged
-fetch('header-menu.json')
-  .then(response => response.json())
-  .then(data => {
-    console.log(data.menu);
-  })
-  .catch(error => {
-    console.error('Error loading menu:', error);
-  });
-
-//Header Logic
-const menuLvl0Title = document.querySelectorAll('.menu-lvl0-title')
-const submenuContainer = document.querySelectorAll('.submenu-container')
-menuLvl0Title.forEach((title, i) => {
-  title.addEventListener('mouseover', () => {
-    const isOpen = submenuContainer[i].classList.contains('active');
-
-    // Close all first
-    submenuContainer.forEach(list => list.classList.remove('active'));
-    menuLvl0Title.forEach(t => t.classList.remove('active'));
-
-    if (!isOpen) {
-      // If it was closed, open it
-      submenuContainer[i].classList.add('active');
-      menuLvl0Title[i].classList.add('active');
-    }
-    // If it was open, clicking again leaves all closed
-  });
-});
